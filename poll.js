@@ -4,7 +4,7 @@ admin.initializeApp({
 credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)),
 });
 const db = admin.firestore();
-const BASE_URL = "https://fire-detection-backend-1.onrender.com";
+const BASE_URL = process.env.BASE_URL;
 const CHECK_INTERVAL_MS = 20_000; // check every 20 seconds
 const TOTAL_RUN_MS = 4.5 * 60 * 1000; // loop for 4.5 min, under the 5-min cron gap
 async function checkDevice(deviceId) {
