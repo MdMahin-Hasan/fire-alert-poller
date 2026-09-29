@@ -10,15 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - run: npm install
+      - name: Install dependencies
+        run: npm install
 
-      - run: node poll.js
+      - name: Check files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files:"
+          ls -la
+          echo "Node version:"
+          node --version
+
+      - name: Run node poll.js
+        run: |
+          echo "STEP STARTED"
+          node poll.js
+          echo "NODE FINISHED"
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           BASE_URL: ${{ secrets.BASE_URL }}
