@@ -1,0 +1,7 @@
+{
+"name": "fire-alert-poller",
+"dependencies": {
+"axios": "^1.7.7",
+"firebase-admin": "^12.6.0"
+}
+}
